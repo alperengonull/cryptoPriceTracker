@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
-import axios from 'axios';
+import { fetchCryptoMarkets } from '../utils/api'; // API fonksiyonlarını içe aktar
 import CryptoItem from '../components/CryptoItem';
 import SearchComponent from '../components/SearchComponent';
 
@@ -10,15 +10,10 @@ const CryptoListScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchCryptoData = async () => {
+        const loadData = async () => {
             try {
-                const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
-                    params: {
-                        vs_currency: 'usd',
-                    },
-                });
-                console.log('API RESPONSE: ', response.data)
-                setCryptoData(response.data);
+                const data = await fetchCryptoMarkets();
+                setCryptoData(data);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -26,7 +21,7 @@ const CryptoListScreen = ({ navigation }) => {
             }
         };
 
-        fetchCryptoData();
+        loadData();
     }, []);
 
     const filteredData = cryptoData.filter((item) =>
@@ -51,10 +46,7 @@ const CryptoListScreen = ({ navigation }) => {
                     <View style={styles.itemContainer}>
                         <TouchableOpacity
                             onPress={() => navigation.navigate('CryptoDetail', {
-                                name: item.name,
-                                price: item.current_price,
-                                image: item.image,
-                                id: item.id,
+                                coinId: item.id, // coinId parametresini ekleyin
                             })}
                         >
                             <CryptoItem name={item.name} price={item.current_price} image={item.image} item={item} />

@@ -45,10 +45,7 @@ const HomeScreen = ({ navigation }) => {
                         <View style={styles.itemContainer}>
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('CryptoDetail', {
-                                    name: item.name,
-                                    price: item.current_price,
-                                    image: item.image,
-                                    id: item.id,
+                                    coinId: item.id, // coinId parametresini ekleyin
                                 })}
                             >
                                 <CryptoItem key={item.id.toString()} name={item.name} price={item.current_price} image={item.image} item={item} showFavoriteButton={false} />
