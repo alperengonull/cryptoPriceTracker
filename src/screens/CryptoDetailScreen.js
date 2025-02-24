@@ -9,6 +9,7 @@ const CryptoDetailScreen = ({ route, navigation }) => {
     const [coinData, setCoinData] = useState(null);
     const [marketData, setMarketData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const loadData = async () => {
@@ -16,9 +17,14 @@ const CryptoDetailScreen = ({ route, navigation }) => {
                 const data = await fetchCoinData(coinId);
                 setCoinData(data);
                 const marketChartData = await fetchCoinMarketChart(coinId);
+
                 setMarketData(marketChartData);
             } catch (error) {
-                console.error(error);
+                if (error.response && error.response.status === 429) {
+                    setError('Too many requests. Please try again later.');
+                } else {
+                    console.error(error);
+                }
             } finally {
                 setLoading(false);
             }
@@ -31,6 +37,14 @@ const CryptoDetailScreen = ({ route, navigation }) => {
         return (
             <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color="#F0B90B" />
+            </View>
+        );
+    }
+
+    if (error) {
+        return (
+            <View style={styles.loadingContainer}>
+                <Text style={styles.errorText}>{error}</Text>
             </View>
         );
     }
@@ -69,6 +83,7 @@ const CryptoDetailScreen = ({ route, navigation }) => {
                 yAxisColor="white"
                 yAxisThickness={0}
                 rulesType="solid"
+                rulesThickness={0}
                 rulesColor="gray"
                 yAxisTextStyle={{ color: 'gray' }}
                 yAxisSide="right"
@@ -123,6 +138,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#1f2328',
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 16,
+        textAlign: 'center',
+        margin: 20,
     },
 });
 
