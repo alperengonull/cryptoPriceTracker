@@ -17,7 +17,7 @@ const CryptoItem = ({ name, price, image, item, showFavoriteButton = true }) => 
 
     return (
         <View style={styles.container}>
-            <Image source={{ uri: image }} style={styles.icon} />
+            <Image source={{ uri: image }} style={styles.image} />
             <View style={styles.textContainer}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.price}>${price.toFixed(2)}</Text>
@@ -28,6 +28,7 @@ const CryptoItem = ({ name, price, image, item, showFavoriteButton = true }) => 
                     onPress={handleAddToFavorites}
                 >
                     <AntDesign
+                        style={styles.heartIcon}
                         name={isFavorite ? 'heart' : 'hearto'}
                         size={20}
                         color={isFavorite ? '#F0B90B' : '#000'}
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#2a3037',
-        padding: 10,
+        padding: 20,
         borderRadius: 8,
         marginVertical: 5,
         marginHorizontal: 10,
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
-    icon: {
+    image: {
         width: 36,
         height: 36,
         marginRight: 12,
@@ -74,6 +75,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 8,
     },
+    // heartIcon: {
+    //     color: 'white',
+    // },
 
 });
 
