@@ -73,8 +73,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     greeting: {
-        flex: 1,
-        marginLeft: 10,
+
     },
     helloText: {
         fontSize: 18,
@@ -107,6 +106,8 @@ const styles = StyleSheet.create({
     },
     itemContainer: {
         marginBottom: 10,
+        marginLeft: -10,
+        marginRight: -10,
     },
     rowBack: {
         alignItems: 'center',

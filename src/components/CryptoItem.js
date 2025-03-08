@@ -5,6 +5,7 @@ import { favoritesAtom } from '../atoms/favoritesAtom';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const CryptoItem = ({ name, price, image, item, showFavoriteButton = true }) => {
+
     const [favorites, setFavorites] = useAtom(favoritesAtom);
 
     const isFavorite = favorites.some(favorite => favorite.id === item.id);

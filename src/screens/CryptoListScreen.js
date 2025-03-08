@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { fetchCryptoMarkets } from '../utils/api'; // API fonksiyonlarını içe aktar
+import { View, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { fetchCryptoMarkets } from '../utils/api';
 import CryptoItem from '../components/CryptoItem';
 import SearchComponent from '../components/SearchComponent';
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 50,
         flex: 1,
-        padding: 16,
+        padding: 10,
         backgroundColor: '#1f2328',
     },
     itemContainer: {

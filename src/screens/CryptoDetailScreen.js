@@ -127,12 +127,42 @@ const CryptoDetailScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16, backgroundColor: '#1f2328' },
-    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-    title: { fontSize: 18, fontWeight: 'bold', color: '#FFF', textAlign: 'center', flex: 1 },
-    image: { width: 100, height: 100, alignSelf: 'center', marginVertical: 20 },
-    name: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: '#FFF' },
-    price: { fontSize: 20, color: '#4CAF50', textAlign: 'center', marginVertical: 10 },
+    container: {
+        flex: 1,
+        padding: 16,
+        backgroundColor: '#1f2328'
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFF',
+        textAlign: 'center',
+        flex: 1
+    },
+    image: {
+        width: 100,
+        height: 100,
+        alignSelf: 'center',
+        marginVertical: 20
+    },
+    name: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#FFF'
+    },
+    price: {
+        fontSize: 20,
+        color: '#4CAF50',
+        textAlign: 'center',
+        marginVertical: 10
+    },
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',

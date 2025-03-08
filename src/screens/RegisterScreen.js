@@ -25,7 +25,7 @@ const RegisterScreen = ({ navigation }) => {
             const user = userCredential.user;
             await updateProfile(user, { displayName: `${firstName} ${lastName}` });
 
-            // Favori coinleri güncelle
+            // Yeni kayıt olan kullanıcının favori listesini sıfırlıyor.
             setFavorites([]);
 
             navigation.navigate('Login');
