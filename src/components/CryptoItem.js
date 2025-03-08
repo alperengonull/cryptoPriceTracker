@@ -11,7 +11,9 @@ const CryptoItem = ({ name, price, image, item, showFavoriteButton = true }) => 
     const isFavorite = favorites.some(favorite => favorite.id === item.id);
 
     const handleAddToFavorites = () => {
-        if (!isFavorite) {
+        if (isFavorite) {
+            setFavorites(favorites.filter(favorite => favorite.id !== item.id));
+        } else {
             setFavorites([...favorites, item]);
         }
     };
