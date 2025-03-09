@@ -30,6 +30,7 @@ const CryptoStack = () => (
 
 const MainTabNavigator = () => (
     <Tab.Navigator
+        initialRouteName='Home'
         screenOptions={({ route }) => ({
             tabBarIcon: ({ color, size }) => {
                 let iconName;

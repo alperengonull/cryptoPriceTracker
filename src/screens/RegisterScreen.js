@@ -12,7 +12,10 @@ const RegisterScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+
+
     const setFavorites = useSetAtom(favoritesAtom);
+
 
     const handleRegister = async () => {
         if (password !== confirmPassword) {
